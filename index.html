@@ -1,252 +1,285 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mauvetek</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mauvetek</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    html { scroll-behavior: smooth; }
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      letter-spacing: -0.01em;
-    }
+      body {
+        font-family: "Inter", sans-serif;
+        letter-spacing: -0.01em;
+      }
 
-    .nav-active {
-      color: #7e469b;
-      font-weight: 500;
-    }
+      .nav-active {
+        color: #7e469b;
+        font-weight: 500;
+      }
 
-    .sidebar {
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-    }
+      .sidebar {
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
 
-    .sidebar.open {
-      transform: translateX(0);
-    }
-  </style>
-</head>
+      .sidebar.open {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
 
-<body class="bg-white text-gray-900">
+  <body class="bg-white text-gray-900">
+    <!-- NAVBAR -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 z-50">
+      <div
+        class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto"
+      >
+        <div class="flex items-center gap-3">
+          <img src="mauvetek.png" class="w-9 h-9" />
+          <span class="font-medium">Mauvetek_</span>
+        </div>
 
-  <!-- NAVBAR -->
-  <header class="sticky top-0 bg-white border-b border-gray-200 z-50">
-    <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+        <nav class="hidden md:flex gap-6 text-sm text-gray-600">
+          <a href="#hero" class="nav-link hover:text-black">Inicio</a>
+          <a href="#about" class="nav-link hover:text-black">Quiénes somos</a>
+          <a href="#why" class="nav-link hover:text-black">Por qué</a>
+          <a href="#services" class="nav-link hover:text-black">Servicios</a>
+          <a href="#presence" class="nav-link hover:text-black">Presencia</a>
+          <a href="#contact" class="nav-link hover:text-black">Contacto</a>
+        </nav>
 
-      <div class="flex items-center gap-3">
-        <img src="mauvetek.png" class="w-9 h-9">
-        <span class="font-medium">Mauvetek</span>
+        <div class="hidden md:flex gap-3">
+          <a
+            href="https://calendly.com/mauvetek/30min"
+            class="border border-gray-300 px-4 py-2 rounded-lg text-sm hover:border-black transition"
+          >
+            Agendar llamada
+          </a>
+
+          <a
+            href="https://wa.me/51940805086"
+            class="bg-[#7e469b] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#532c67] transition"
+          >
+            WhatsApp
+          </a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden text-2xl">☰</button>
+      </div>
+    </header>
+
+    <!-- OVERLAY -->
+    <div id="overlay" class="fixed inset-0 bg-black/30 hidden z-40"></div>
+
+    <!-- SIDEBAR -->
+    <div
+      id="sidebar"
+      class="sidebar fixed top-0 right-0 h-full w-72 bg-white shadow-lg z-50 p-6 flex flex-col"
+    >
+      <div class="flex justify-between items-center mb-8">
+        <span class="font-medium">Menú</span>
+        <button id="close-btn" class="text-xl">✕</button>
       </div>
 
-      <nav class="hidden md:flex gap-6 text-sm text-gray-600">
-        <a href="#hero" class="nav-link hover:text-black">Inicio</a>
-        <a href="#about" class="nav-link hover:text-black">Quiénes somos</a>
-        <a href="#why" class="nav-link hover:text-black">Por qué</a>
-        <a href="#services" class="nav-link hover:text-black">Servicios</a>
-        <a href="#presence" class="nav-link hover:text-black">Presencia</a>
-        <a href="#contact" class="nav-link hover:text-black">Contacto</a>
+      <nav class="flex flex-col gap-4 text-gray-700">
+        <a href="#hero" class="nav-link">Inicio</a>
+        <a href="#about" class="nav-link">Quiénes somos</a>
+        <a href="#why" class="nav-link">Por qué</a>
+        <a href="#services" class="nav-link">Servicios</a>
+        <a href="#presence" class="nav-link">Presencia</a>
+        <a href="#contact" class="nav-link">Contacto</a>
       </nav>
 
-      <div class="hidden md:flex gap-3">
-        <a href="https://calendly.com/mauvetek/30min"
-           class="border border-gray-300 px-4 py-2 rounded-lg text-sm hover:border-black transition">
+      <div class="mt-8 flex flex-col gap-3">
+        <a
+          href="https://calendly.com/mauvetek/30min"
+          class="border border-gray-300 text-center py-2 rounded-lg"
+        >
           Agendar llamada
         </a>
 
-        <a href="https://wa.me/51940805086"
-           class="bg-[#7e469b] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#532c67] transition">
+        <a
+          href="https://wa.me/51940805086"
+          class="bg-[#7e469b] text-white text-center py-2 rounded-lg"
+        >
           WhatsApp
         </a>
       </div>
-
-      <button id="menu-btn" class="md:hidden text-2xl">☰</button>
-    </div>
-  </header>
-
-  <!-- OVERLAY -->
-  <div id="overlay" class="fixed inset-0 bg-black/30 hidden z-40"></div>
-
-  <!-- SIDEBAR -->
-  <div id="sidebar"
-       class="sidebar fixed top-0 right-0 h-full w-72 bg-white shadow-lg z-50 p-6 flex flex-col">
-
-    <div class="flex justify-between items-center mb-8">
-      <span class="font-medium">Menú</span>
-      <button id="close-btn" class="text-xl">✕</button>
     </div>
 
-    <nav class="flex flex-col gap-4 text-gray-700">
-      <a href="#hero" class="nav-link">Inicio</a>
-      <a href="#about" class="nav-link">Quiénes somos</a>
-      <a href="#why" class="nav-link">Por qué</a>
-      <a href="#services" class="nav-link">Servicios</a>
-      <a href="#presence" class="nav-link">Presencia</a>
-      <a href="#contact" class="nav-link">Contacto</a>
-    </nav>
+    <!-- HERO -->
+    <section id="hero" class="py-24 text-center max-w-4xl mx-auto px-6">
+      <h1 class="text-5xl md:text-6xl font-semibold mb-6">
+        Construimos software a medida para empresas que buscan escalar
+      </h1>
 
-    <div class="mt-8 flex flex-col gap-3">
-      <a href="https://calendly.com/mauvetek/30min"
-         class="border border-gray-300 text-center py-2 rounded-lg">
-        Agendar llamada
-      </a>
+      <p class="text-gray-600 text-lg mb-10">
+        Desarrollo, outsourcing y consultoría tecnológica para startups y
+        empresas en crecimiento.
+      </p>
 
-      <a href="https://wa.me/51940805086"
-         class="bg-[#7e469b] text-white text-center py-2 rounded-lg">
-        WhatsApp
-      </a>
-    </div>
-  </div>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a
+          href="https://calendly.com/mauvetek/30min"
+          class="bg-[#7e469b] text-white px-6 py-3 rounded-lg hover:bg-[#532c67] transition"
+        >
+          Agendar llamada
+        </a>
 
-  <!-- HERO -->
-  <section id="hero" class="py-24 text-center max-w-4xl mx-auto px-6">
-    <h1 class="text-5xl md:text-6xl font-semibold mb-6">
-      Construimos software a medida para empresas que buscan escalar
-    </h1>
-
-    <p class="text-gray-600 text-lg mb-10">
-      Desarrollo, outsourcing y consultoría tecnológica para startups y empresas en crecimiento.
-    </p>
-
-    <div class="flex justify-center gap-4 flex-wrap">
-      <a href="https://calendly.com/mauvetek/30min"
-         class="bg-[#7e469b] text-white px-6 py-3 rounded-lg hover:bg-[#532c67] transition">
-        Agendar llamada
-      </a>
-
-      <a href="https://wa.me/51940805086"
-         class="border border-gray-300 px-6 py-3 rounded-lg hover:border-[#7e469b] hover:text-[#7e469b] transition">
-        WhatsApp
-      </a>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-20 max-w-3xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-semibold mb-6">Quiénes somos</h2>
-
-    <p class="text-gray-600 text-lg leading-relaxed">
-      En Mauvetek ayudamos a empresas a convertir ideas en soluciones tecnológicas reales.
-      Combinamos experiencia en desarrollo de software, pensamiento estratégico y enfoque en negocio
-      para construir productos digitales que generan impacto.
-    </p>
-
-    <p class="text-gray-500 mt-4">
-      Trabajamos de forma ágil, cercana y orientada a resultados, colaborando con startups y empresas
-      que buscan escalar con tecnología moderna.
-    </p>
-  </section>
-
-  <!-- WHY -->
-  <section id="why" class="py-20 max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl text-center font-semibold mb-12">Por qué Mauvetek</h2>
-
-    <div class="grid md:grid-cols-3 gap-8 text-center">
-
-      <div>
-        <h3 class="font-semibold mb-2">Enfoque en negocio</h3>
-        <p class="text-gray-600 text-sm">
-          No solo desarrollamos software, construimos soluciones alineadas a tus objetivos.
-        </p>
+        <a
+          href="https://wa.me/51940805086"
+          class="border border-gray-300 px-6 py-3 rounded-lg hover:border-[#7e469b] hover:text-[#7e469b] transition"
+        >
+          WhatsApp
+        </a>
       </div>
+    </section>
 
-      <div>
-        <h3 class="font-semibold mb-2">Velocidad y calidad</h3>
-        <p class="text-gray-600 text-sm">
-          Entregas rápidas sin comprometer la calidad del producto.
-        </p>
+    <!-- ABOUT -->
+    <section id="about" class="py-20 max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-semibold mb-6">Quiénes somos</h2>
+
+      <p class="text-gray-600 text-lg leading-relaxed">
+        En Mauvetek ayudamos a empresas a convertir ideas en soluciones
+        tecnológicas reales. Combinamos experiencia en desarrollo de software,
+        pensamiento estratégico y enfoque en negocio para construir productos
+        digitales que generan impacto.
+      </p>
+
+      <p class="text-gray-500 mt-4">
+        Trabajamos de forma ágil, cercana y orientada a resultados, colaborando
+        con startups y empresas que buscan escalar con tecnología moderna.
+      </p>
+    </section>
+
+    <!-- WHY -->
+    <section id="why" class="py-20 max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl text-center font-semibold mb-12">Por qué Mauvetek</h2>
+
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <h3 class="font-semibold mb-2">Enfoque en negocio</h3>
+          <p class="text-gray-600 text-sm">
+            No solo desarrollamos software, construimos soluciones alineadas a
+            tus objetivos.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-2">Velocidad y calidad</h3>
+          <p class="text-gray-600 text-sm">
+            Entregas rápidas sin comprometer la calidad del producto.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-2">Experiencia real</h3>
+          <p class="text-gray-600 text-sm">
+            Experiencia en productos reales, no solo proyectos teóricos.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <div>
-        <h3 class="font-semibold mb-2">Experiencia real</h3>
-        <p class="text-gray-600 text-sm">
-          Experiencia en productos reales, no solo proyectos teóricos.
-        </p>
+    <!-- SERVICES -->
+    <section id="services" class="py-20 max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl text-center font-semibold mb-12">Servicios</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-50 p-6 border rounded-xl">
+          <h3 class="font-semibold">Desarrollo a medida</h3>
+        </div>
+        <div class="bg-gray-50 p-6 border rounded-xl">
+          <h3 class="font-semibold">Outsourcing</h3>
+        </div>
+        <div class="bg-gray-50 p-6 border rounded-xl">
+          <h3 class="font-semibold">Consultoría tecnológica</h3>
+        </div>
+        <div class="bg-gray-50 p-6 border rounded-xl">
+          <h3 class="font-semibold">Consultoría de proyectos</h3>
+        </div>
+        <div class="bg-gray-50 p-6 border rounded-xl">
+          <h3 class="font-semibold">IA & Data</h3>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- PRESENCE -->
+    <section id="presence" class="py-20 text-center px-6">
+      <h2 class="text-3xl font-semibold mb-6">Presencia internacional</h2>
+      <p class="text-gray-500">🇵🇪 Perú → 🇺🇸 USA</p>
+    </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="py-20 max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl text-center font-semibold mb-12">Servicios</h2>
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 text-center px-6">
+      <h2 class="text-3xl font-semibold mb-4">Cuéntanos sobre tu proyecto</h2>
+      <p class="text-gray-500 mb-6">Respuesta en menos de 24 horas.</p>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-50 p-6 border rounded-xl"><h3 class="font-semibold">Desarrollo a medida</h3></div>
-      <div class="bg-gray-50 p-6 border rounded-xl"><h3 class="font-semibold">Outsourcing</h3></div>
-      <div class="bg-gray-50 p-6 border rounded-xl"><h3 class="font-semibold">Consultoría tecnológica</h3></div>
-      <div class="bg-gray-50 p-6 border rounded-xl"><h3 class="font-semibold">Consultoría de proyectos</h3></div>
-      <div class="bg-gray-50 p-6 border rounded-xl"><h3 class="font-semibold">IA & Data</h3></div>
-    </div>
-  </section>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a
+          href="https://calendly.com/mauvetek/30min"
+          class="bg-[#7e469b] text-white px-6 py-3 rounded-lg hover:bg-[#532c67]"
+        >
+          Agendar llamada
+        </a>
 
-  <!-- PRESENCE -->
-  <section id="presence" class="py-20 text-center px-6">
-    <h2 class="text-3xl font-semibold mb-6">Presencia internacional</h2>
-    <p class="text-gray-500">🇵🇪 Perú → 🇺🇸 USA</p>
-  </section>
+        <a
+          href="https://wa.me/51940805086"
+          class="border border-gray-300 px-6 py-3 rounded-lg hover:border-[#7e469b] hover:text-[#7e469b]"
+        >
+          WhatsApp
+        </a>
+      </div>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-20 text-center px-6">
-    <h2 class="text-3xl font-semibold mb-4">Cuéntanos sobre tu proyecto</h2>
-    <p class="text-gray-500 mb-6">Respuesta en menos de 24 horas.</p>
+    <!-- JS -->
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-btn");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
 
-    <div class="flex justify-center gap-4 flex-wrap">
-      <a href="https://calendly.com/mauvetek/30min"
-         class="bg-[#7e469b] text-white px-6 py-3 rounded-lg hover:bg-[#532c67]">
-        Agendar llamada
-      </a>
+      function openMenu() {
+        sidebar.classList.add("open");
+        overlay.classList.remove("hidden");
+      }
 
-      <a href="https://wa.me/51940805086"
-         class="border border-gray-300 px-6 py-3 rounded-lg hover:border-[#7e469b] hover:text-[#7e469b]">
-        WhatsApp
-      </a>
-    </div>
-  </section>
+      function closeMenu() {
+        sidebar.classList.remove("open");
+        overlay.classList.add("hidden");
+      }
 
-  <!-- JS -->
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-btn');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
+      menuBtn.addEventListener("click", openMenu);
+      closeBtn.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", closeMenu);
 
-    function openMenu() {
-      sidebar.classList.add('open');
-      overlay.classList.remove('hidden');
-    }
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
 
-    function closeMenu() {
-      sidebar.classList.remove('open');
-      overlay.classList.add('hidden');
-    }
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          if (scrollY >= sectionTop) current = section.getAttribute("id");
+        });
 
-    menuBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
-
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (scrollY >= sectionTop) current = section.getAttribute('id');
+        navLinks.forEach((link) => {
+          link.classList.remove("nav-active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("nav-active");
+          }
+        });
       });
-
-      navLinks.forEach(link => {
-        link.classList.remove('nav-active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('nav-active');
-        }
-      });
-    });
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
